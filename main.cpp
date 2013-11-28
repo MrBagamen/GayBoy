@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdio>
+#include <cstring>
 
 using namespace std;
 
@@ -27,7 +28,8 @@ int main(int argc, char *argv[])
     FILE *file = fopen(filename.c_str(), "rb");
 
     if (file == nullptr) {
-        printf("Error loading %s\n", filename.c_str());
+        printf("Error opening \"%s\" for reading.\n"
+               "Reason: %s\n", filename.c_str(), strerror(errno));
         exit(1);
     }
 
