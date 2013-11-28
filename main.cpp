@@ -15,7 +15,11 @@ int main(int argc, char *argv[])
     char *buffer;
     int fSize;
     FILE *file = fopen(filename.c_str(), "rb");
-    if(file == nullptr){printf("Error loading %s\n", filename.c_str());exit(1);};
+
+    if (file == nullptr) {
+        printf("Error loading %s\n", filename.c_str());
+        exit(1);
+    }
 
     fseek(file, 0, SEEK_END);
     fSize = ftell(file);
