@@ -1,4 +1,8 @@
 #include "gameboy.hpp"
+#include <array>
+#include <vector>
+#include <iostream>
+#include <fstream>
 #include <algorithm>
 #include <array>
 
@@ -38,6 +42,8 @@ namespace gb {
             std::cerr << "Error: " << e.what() << std::endl;
             exit(EXIT_FAILURE);
         }
+        rom.resize(getFileSize(file));
+        file.read(reinterpret_cast<char*>(rom.data()), rom.size());
         std::cout << "Loaded " << filePath << std::endl;
         gb::rom.resize(getFileSize(file));
         file.read(reinterpret_cast<char*>(gb::rom.data()), gb::rom.size());
