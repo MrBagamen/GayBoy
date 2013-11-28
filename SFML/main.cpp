@@ -16,8 +16,8 @@ int main(int argc, char ** argv) {
                 window.close();
         }
         std::array<sf::Uint8, 160 * 144 * 4> pixels;
-        for (decltype(pixels)::size_type i = 0; i < pixels.size(); ++i)
-            pixels[i] = rand();
+        for (auto &p : pixels)
+            p = rand();
         display.update(pixels.data());
         window.draw(sf::Sprite(display));
         window.display();
