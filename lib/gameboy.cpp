@@ -45,8 +45,6 @@ namespace gb {
         rom.resize(getFileSize(file));
         file.read(reinterpret_cast<char*>(rom.data()), rom.size());
         std::cout << "Loaded " << filePath << std::endl;
-        rom.resize(getFileSize(file));
-        file.read(reinterpret_cast<char*>(rom.data()), rom.size());
         std::cout << "Size of rom: " << rom.size() / 1024 << "KiB" << std::endl;
         if (!isRomValid())
             throw std::runtime_error("Not a valid gameboy rom.");
