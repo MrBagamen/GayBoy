@@ -1,2 +1,7 @@
-roms/
-*.user
+
+*
+!**/
+!.gitignore
+!CMakeLists.txt
+!*.cpp
+!*.md
