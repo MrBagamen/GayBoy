@@ -38,5 +38,4 @@ int main(int argc, char *argv[])
     fread(buffer, 1, fSize, file);
     fclose(file);
     delete[] buffer;
-    return 0;
 }
