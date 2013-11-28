@@ -1,0 +1,6 @@
+project(GayBoy)
+cmake_minimum_required(VERSION 2.8)
+aux_source_directory(. SRC_LIST)
+add_compile_options(-std=c++11)
+add_executable(gayboy ${SRC_LIST})
+target_link_libraries(gayboy SDL2)
