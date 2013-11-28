@@ -9,6 +9,7 @@
 
 namespace gb {
     void loadROM(std::string filePath);
+    void checkROMValid();
 }
 
 #endif // GAMEBOY_HPP
