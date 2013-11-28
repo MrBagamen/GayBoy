@@ -24,7 +24,6 @@ int main(int argc, char *argv[])
     else
         filename = "roms/marioland.gb";
 
-    char *buffer;
     FILE *file = fopen(filename.c_str(), "rb");
 
     if (file == nullptr) {
@@ -33,7 +32,7 @@ int main(int argc, char *argv[])
     }
 
     auto fSize = getFileSize(file);
-    buffer = new char[fSize];
+    char *buffer = new char[fSize];
     fread(buffer, 1, fSize, file);
     fclose(file);
     delete[] buffer;
