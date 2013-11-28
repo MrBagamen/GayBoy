@@ -3,6 +3,18 @@
 
 using namespace std;
 
+namespace {
+
+long getFileSize(FILE *file)
+{
+    fseek(file, 0, SEEK_END);
+    auto size = ftell(file);
+    rewind(file);
+    return size;
+}
+
+}
+
 int main(int argc, char *argv[])
 {
     string filename;
@@ -13,7 +25,6 @@ int main(int argc, char *argv[])
         filename = "roms/marioland.gb";
 
     char *buffer;
-    int fSize;
     FILE *file = fopen(filename.c_str(), "rb");
 
     if (file == nullptr) {
@@ -21,14 +32,9 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    fseek(file, 0, SEEK_END);
-    fSize = ftell(file);
-    rewind(file);
+    auto fSize = getFileSize(file);
     buffer = new char[fSize];
     fread(buffer, 1, fSize, file);
-
-
-
     fclose(file);
     delete[] buffer;
     return 0;
