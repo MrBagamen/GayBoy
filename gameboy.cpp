@@ -1,6 +1,9 @@
 #include "gameboy.hpp"
-#include <algorithm>
 #include <array>
+#include <vector>
+#include <iostream>
+#include <fstream>
+#include <algorithm>
 
 namespace {
     std::size_t getFileSize(std::ifstream & file) {
