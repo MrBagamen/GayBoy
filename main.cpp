@@ -3,12 +3,19 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
+    string filename;
+
+    if (argc > 1)
+        filename = argv[1];
+    else
+        filename = "roms/marioland.gb";
+
     char *buffer;
     int fSize;
-    FILE *file = fopen("roms/marioland.gb", "rb");
-    if(file == nullptr){printf("Error loading %s\n", "shit.gb");exit(1);};
+    FILE *file = fopen(filename.c_str(), "rb");
+    if(file == nullptr){printf("Error loading %s\n", filename.c_str());exit(1);};
 
     fseek(file, 0, SEEK_END);
     fSize = ftell(file);
