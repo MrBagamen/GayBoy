@@ -28,7 +28,7 @@ namespace gb {
         return std::equal(logo.begin(), logo.end(), rom.begin() + 0x104);
     }
     void cartridgeType() {
-        carttype = gb::rom.at(0x0147);
+        carttype = rom.at(0x0147);
         printf("Cart type: %02x\n", carttype);
     }
     
@@ -45,9 +45,9 @@ namespace gb {
         rom.resize(getFileSize(file));
         file.read(reinterpret_cast<char*>(rom.data()), rom.size());
         std::cout << "Loaded " << filePath << std::endl;
-        gb::rom.resize(getFileSize(file));
-        file.read(reinterpret_cast<char*>(gb::rom.data()), gb::rom.size());
-        std::cout << "Size of rom: " << gb::rom.size() / 1024 << "KiB" << std::endl;
+        rom.resize(getFileSize(file));
+        file.read(reinterpret_cast<char*>(rom.data()), rom.size());
+        std::cout << "Size of rom: " << rom.size() / 1024 << "KiB" << std::endl;
         if (!isRomValid())
             throw std::runtime_error("Not a valid gameboy rom.");
         cartridgeType();
