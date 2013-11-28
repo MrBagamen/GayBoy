@@ -19,7 +19,7 @@ namespace gb {
     std::vector<unsigned char> rom, ram, vram;
     unsigned char carttype;
 
-    bool isRomValid() {
+    bool compareLogo() {
         std::array<unsigned char, 48> logo {
             0xCE, 0xED, 0x66, 0x66, 0xCC, 0x0D, 0x00, 0x0B, 0x03, 0x73, 0x00, 0x83, 0x00, 0x0C, 0x00, 0x0D,
             0x00, 0x08, 0x11, 0x1F, 0x88, 0x89, 0x00, 0x0E, 0xDC, 0xCC, 0x6E, 0xE6, 0xDD, 0xDD, 0xD9, 0x99,
@@ -31,7 +31,6 @@ namespace gb {
         carttype = rom.at(0x0147);
         printf("Cart type: %02x\n", carttype);
     }
-    
     void loadROM(std::string filePath) {
         std::ifstream file;
         file.exceptions(std::ios::failbit | std::ios::badbit);
@@ -46,8 +45,8 @@ namespace gb {
         file.read(reinterpret_cast<char*>(rom.data()), rom.size());
         std::cout << "Loaded " << filePath << std::endl;
         std::cout << "Size of rom: " << rom.size() / 1024 << "KiB" << std::endl;
-        if (!isRomValid())
-            throw std::runtime_error("Not a valid gameboy rom.");
+        if (!compareLogo())
+            throw std::runtime_error("Logo comparison failed. Invalid or corrupted ROM.");
         cartridgeType();
     }
 }
