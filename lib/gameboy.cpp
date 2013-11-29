@@ -1,5 +1,6 @@
-#include <vector>
+#include "gayboy.hpp"
 
 namespace gb {
-    std::vector<unsigned char> rom, ram, vram;
+    std::vector<unsigned char> rom;
+    std::array<unsigned char, 8192> ram, vram;
 }
