@@ -27,5 +27,7 @@ namespace gb {
             throw std::runtime_error("Logo comparison failed. Invalid or corrupted ROM.");
         if (!validateHeaderChecksum())
             throw std::runtime_error("Header checksum failed. Invalid or corrupted ROM.");
+        // Program execution begins at $100
+        cpu::pc = 0x100;
     }
 }
