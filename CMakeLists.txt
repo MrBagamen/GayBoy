@@ -1,5 +1,6 @@
 project(GayBoy)
 cmake_minimum_required(VERSION 2.8.12)
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMake/Modules" ${CMAKE_MODULE_PATH})
 add_compile_options(-std=c++11 -pedantic -Wall -Wextra -Wshadow)
 add_subdirectory(lib)
 add_subdirectory(SFML)
