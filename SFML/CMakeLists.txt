@@ -5,7 +5,7 @@ if(NOT SFML_FOUND)
 endif()
 include_directories(${SFML_INCLUDE_DIR})
 
-include_directories(../lib)
+include_directories(../lib/include)
 add_executable(sfgayboy
 main.cpp
 )
