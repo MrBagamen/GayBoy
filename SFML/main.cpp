@@ -1,9 +1,10 @@
-#include "gameboy.hpp"
+#include "gayboy.hpp"
 #include <SFML/Graphics.hpp>
 #include <array>
 
 int main(int argc, char ** argv) {
     gb::loadROM(argc > 1 ? argv[1] : "roms/Kirby's Dream Land.gb");
+    gb::powerup();
     sf::RenderWindow window(sf::VideoMode(160, 144), "GayBoy");
     sf::Texture display;
     display.create(160, 144);
